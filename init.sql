@@ -1,3 +1,4 @@
+#DDL
 CREATE SCHEMA FAQ_DB;
 
 USE FAQ_DB;
@@ -18,3 +19,14 @@ CREATE TABLE `faq` (
         REFERENCES `topics` (`topic_id`)
         ON DELETE NO ACTION ON UPDATE NO ACTION
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+#DML
+insert into `topics`  values 
+	(10,'Javabean'),
+    (20,'Servlet'),
+    (30,'jsp');
+    
+insert into `faq` values
+	(10,1,'What is a java bean?','A java bean is a component written in Java.'),
+    (10,2,'Are Java beans portable?', 'Yes, they are Java components.'),
+    (20,1,'What is a Java Servlet?','A Java Servlet is a server side Java class that runs on a Web server');
