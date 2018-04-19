@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -13,7 +14,8 @@ import javax.persistence.NamedQuery;
  * 
  */
 @Entity
-@NamedQuery(name = "Faq.findAll", query = "SELECT f FROM Faq f")
+@NamedQueries({ @NamedQuery(name = "Faq.findAll", query = "SELECT f FROM Faq f"),
+		@NamedQuery(name = "Faq.findByContainingTopicName", query = "SELECT f FROM Faq f WHERE LOWER(f.topic.topicName) LIKE LOWER(CONCAT('%', :topicName, '%'))") })
 public class Faq implements Serializable {
 	private static final long serialVersionUID = 1L;
 

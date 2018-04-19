@@ -18,7 +18,30 @@ public class DatabaseOperations {
 
 	public static List<Faq> getAllFaqRecords() {
 		TypedQuery<Faq> query = em.createNamedQuery("Faq.findAll", Faq.class);
+		return getFaqQueryResults(query);
 		// Query query = em.createQuery("SELECT f FROM Faq f");
+		// List<Faq> faqList = query.getResultList();
+		// if (faqList != null && faqList.size() > 0) {
+		// return faqList;
+		// } else {
+		// return null;
+		// }
+	}
+
+	public static List<Faq> getAllFaqRecordsWithTopicNameContaining(String topicName) {
+		TypedQuery<Faq> query = em.createNamedQuery("Faq.findByContainingTopicName", Faq.class);
+		query.setParameter("topicName", topicName);
+		return getFaqQueryResults(query);
+		// List<Faq> faqList = query.getResultList();
+		// if (faqList != null && faqList.size() > 0) {
+		// return faqList;
+		// } else {
+		// return null;
+		// }
+	}
+
+	// Helper functions
+	private static List<Faq> getFaqQueryResults(TypedQuery<Faq> query) {
 		List<Faq> faqList = query.getResultList();
 		if (faqList != null && faqList.size() > 0) {
 			return faqList;

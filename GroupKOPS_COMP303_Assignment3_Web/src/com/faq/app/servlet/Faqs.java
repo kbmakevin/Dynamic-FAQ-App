@@ -26,8 +26,8 @@ public class Faqs extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// should not be able to do get request to /Faqs, redirects to landing page
+		response.sendRedirect("");
 	}
 
 	/**
@@ -37,18 +37,20 @@ public class Faqs extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Faq> faqQueryResults = DatabaseOperations.getAllFaqRecords();
-		System.out.println("Found faqs: " + faqQueryResults);
+		// List<Faq> faqQueryResults = DatabaseOperations.getAllFaqRecords();
+		// System.out.println("Found faqs: " + faqQueryResults);
 
 		// when a user has made a post request to /Faqs, then they have queried the
 		// db...otherwise they simply visited page, no queries executed yet (show diff
 		// view on page)
 		HttpSession session = request.getSession();
+		String queriedTopicName = request.getParameter("topicName");
+		List<Faq> faqQueryResults = DatabaseOperations.getAllFaqRecordsWithTopicNameContaining(queriedTopicName);
 
 		// if (request.getAttribute("userQueriedDb") == null) {
 		request.setAttribute("userQueriedDb", true);
 		// }
-		request.setAttribute("queriedTopicName", request.getParameter("topicName"));
+		request.setAttribute("queriedTopicName", queriedTopicName);
 		request.setAttribute("matchingFaqs", faqQueryResults);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
