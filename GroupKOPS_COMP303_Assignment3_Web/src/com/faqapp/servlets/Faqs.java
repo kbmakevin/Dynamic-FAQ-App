@@ -32,6 +32,11 @@ public class Faqs extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		// List<Faq> allFaqs = DatabaseOperations.getAllFaqRecords();
+		//
+		// request.setAttribute("output2", allFaqs);
+
 		request.setAttribute("output", "The answer is 555");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
