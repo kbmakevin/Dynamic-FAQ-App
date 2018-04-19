@@ -16,6 +16,7 @@
 
 	<div class="row" id="result">
 		<h1>${requestScope.output}</h1>
+		<h1>${requestScope.output2}</h1>
 
 		<c:set var="salary" scope="session" value="${500*2}" />
 		<c:if test="${salary > 2000}">

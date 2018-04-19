@@ -1,12 +1,16 @@
 package com.faqapp.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.faqapp.dao.DatabaseOperations;
+import com.faqapp.models.Faq;
 
 /**
  * Servlet implementation class Faqs
@@ -33,9 +37,9 @@ public class Faqs extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		// List<Faq> allFaqs = DatabaseOperations.getAllFaqRecords();
+		List<Faq> allFaqs = DatabaseOperations.getAllFaqRecords();
 		//
-		// request.setAttribute("output2", allFaqs);
+		request.setAttribute("output2", allFaqs);
 
 		request.setAttribute("output", "The answer is 555");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
