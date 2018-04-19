@@ -7,26 +7,60 @@
 	</div>
 
 	<div class="row">
-		Topic name:&nbsp;
 		<form action="Faqs" method="post">
-			<input type="text" id="topicName" name="topicName" /> <input
-				type="submit" class="btn btn-primary pull-right" value="OK" />
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text bg-dark border-dark text-light">Topic
+						name:</span>
+				</div>
+				<input type="text" class="form-control" id="topicName"
+					name="topicName" class="form-control" /> <input type="submit"
+					class="btn btn-dark" value="Search" />
+			</div>
 		</form>
 	</div>
 
-	<div class="row" id="result">
-		<h1>${requestScope.output}</h1>
-		<h1>${requestScope.output2}</h1>
+	<c:choose>
+		<c:when test="${requestScope.userQueriedDb }">
+			<div class="row">
+				<h4>You searched for questions with the topic of
+					"${requestScope.queriedTopicName}".</h4>
+			</div>
+			<!-- we present different displays depending on whether any matching faqs found -->
+			<c:choose>
+				<c:when test="${requestScope.matchingFaqs == null}">
+					<h6 class="text-danger">There are no questions which match
+						your queried topic...</h6>
+				</c:when>
+				<c:otherwise>
+					<h6 class="text-success">There are
+						(${requestScope.matchingFaqs.size() }) questions which match your
+						queried topic.</h6>
 
-		<c:set var="salary" scope="session" value="${500*2}" />
-		<c:if test="${salary > 2000}">
-			<p>
-				My salary is:
-				<c:out value="${salary}" />
-			<p>
-		</c:if>
-	</div>
-
+					<div class="row" id="result">
+						<h3>Table of Frequently Asked Questions</h3>
+						<table class="table table-hover table-dark">
+							<tbody>
+								<c:forEach items="${requestScope.matchingFaqs}" var="faq"
+									varStatus="counter">
+									<tr>
+										<td>${faq.question}</td>
+										<td>${faq.answer}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<!-- show instructions -->
+			<span>Please enter in the name of a topic title above and
+				press search to find questions related to the topic.</span>
+		</c:otherwise>
+	</c:choose>
 </div>
+<!-- end of main container -->
 
 <%--   <%@ include file="./partials/footer.jsp" %> --%>

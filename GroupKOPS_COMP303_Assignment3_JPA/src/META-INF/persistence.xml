@@ -7,8 +7,8 @@
 		name="GroupKOPS_COMP303_Assignment3_JPA"
 		transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:/jndi/faq</non-jta-data-source>
-		<class>com.faqapp.models.Faq</class>
-		<class>com.faqapp.models.FaqPK</class>
-		<class>com.faqapp.models.Topic</class>
+		<class>com.faq.app.model.Faq</class>
+		<class>com.faq.app.model.FaqPK</class>
+		<class>com.faq.app.model.Topic</class>
 	</persistence-unit>
 </persistence>
