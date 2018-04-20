@@ -74,5 +74,7 @@ Add a new Data Source using WildFly Console
 Import EAR into Eclipse and executing Project
 -
 18. Go back to eclipse and import the EAR file included in this zip file into Eclipse.
-19. Deploy the application and run it on your WildFly server.
-20. Open your favorite browser and navigate to http://localhost:8080/GroupKOPS_COMP303_Assignment3_Web/
+19. Right click on "GroupKOPS_COMP303_Assignment3_JPA", go into Properties > Project Facets and make sure the Java version is using 1.8
+20. Right click on "GroupKOPS_COMP303_Assignment3_Web", go into Properties > Project Facets and make sure the Java version is using 1.8
+21. Deploy the application and run it on your WildFly server.
+22. Open your favorite browser and navigate to http://localhost:8080/GroupKOPS_COMP303_Assignment3_Web/
