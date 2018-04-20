@@ -32,3 +32,4 @@ How to compile/run the application:
 12. Click through remaining settings to finish creating data source, test connection and reload the server.
 13. Go back to eclipse and import the EAR file included in this zip file into Eclipse.
 14. Deploy the application and run it on your WildFly server.
+15. Open your favorite browser and navigate to http://localhost:8080/GroupKOPS_COMP303_Assignment3_Web/
