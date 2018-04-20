@@ -37,9 +37,6 @@ public class Faqs extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// List<Faq> faqQueryResults = DatabaseOperations.getAllFaqRecords();
-		// System.out.println("Found faqs: " + faqQueryResults);
-
 		// when a user has made a post request to /Faqs, then they have queried the
 		// db...otherwise they simply visited page, no queries executed yet (show diff
 		// view on page)
@@ -47,9 +44,7 @@ public class Faqs extends HttpServlet {
 		String queriedTopicName = request.getParameter("topicName");
 		List<Faq> faqQueryResults = DatabaseOperations.getAllFaqRecordsWithTopicNameContaining(queriedTopicName);
 
-		// if (request.getAttribute("userQueriedDb") == null) {
 		request.setAttribute("userQueriedDb", true);
-		// }
 		request.setAttribute("queriedTopicName", queriedTopicName);
 		request.setAttribute("matchingFaqs", faqQueryResults);
 		request.getRequestDispatcher("index.jsp").forward(request, response);

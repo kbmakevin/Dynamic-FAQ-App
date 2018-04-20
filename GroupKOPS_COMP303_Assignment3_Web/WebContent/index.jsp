@@ -56,7 +56,7 @@
 		</c:when>
 		<c:otherwise>
 			<!-- show instructions -->
-			<p>Please enter in the name of a topic title above and press
+			<p>Please enter in the name of a topic above and press
 				search to find questions related to the topic.</p>
 			<p>If the topic name field is left blank, all questions will be
 				displayed.</p>
